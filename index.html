@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Electronic Device Life Cycle Assessment Tool" />
+  <meta name="theme-color" content="#0f766e" />
+  <title>Electronic Device LCA | Home</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="index.html" class="brand">
+        <div class="logo">LCA</div>
+        <div class="brand-text">
+          <h1>Electronic Device LCA</h1>
+          <p>Life Cycle Assessment Tool</p>
+        </div>
+      </a>
+      <nav class="nav">
+        <a href="index.html" class="active">Home</a>
+        <a href="calculator.html">Calculator</a>
+        <a href="about.html">About</a>
+      </nav>
+      <div class="header-actions">
+        <button id="themeToggle" class="btn btn-ghost" aria-label="Toggle dark mode">
+          <span class="theme-icon">🌙</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <h1>Measure the Carbon Footprint of Your Electronic Devices</h1>
+      <p>
+        A simple, professional Life Cycle Assessment tool that estimates CO₂e emissions
+        from manufacturing, transportation, use, and end-of-life.
+      </p>
+      <div class="hero-actions">
+        <a href="calculator.html" class="btn btn-primary btn-lg">Open Calculator</a>
+        <a href="about.html" class="btn btn-ghost-dark btn-lg">How it works</a>
+      </div>
+    </section>
+
+    <section class="team-section">
+      <div class="team-inner">
+        <p class="team-badge">Our Team</p>
+        <h2 class="team-title">Meet the Developers</h2>
+        <p class="team-subtitle">This LCA tool was designed and built by</p>
+        <div class="team-grid">
+          <div class="team-card">
+            <div class="team-avatar-wrap">
+              <div class="team-avatar">SS</div>
+              <span class="team-ring"></span>
+            </div>
+            <h3>Soumyashree Sahu</h3>
+            <p class="team-role">Developer</p>
+          </div>
+          <div class="team-card team-card-center">
+            <div class="team-avatar-wrap">
+              <div class="team-avatar">N</div>
+              <span class="team-ring"></span>
+            </div>
+            <h3>Navdeep</h3>
+            <p class="team-role">Developer</p>
+          </div>
+          <div class="team-card">
+            <div class="team-avatar-wrap">
+              <div class="team-avatar">AP</div>
+              <span class="team-ring"></span>
+            </div>
+            <h3>Ayushman Pandey</h3>
+            <p class="team-role">Developer</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="features">
+      <div class="feature-card">
+        <div class="feature-icon">🏭</div>
+        <h3>Manufacturing</h3>
+        <p>Energy used to produce the device and its associated emissions.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🚚</div>
+        <h3>Transportation</h3>
+        <p>Freight emissions based on weight and distance travelled.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">⚡</div>
+        <h3>Use Phase</h3>
+        <p>Electricity consumed over the device’s lifetime.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">♻️</div>
+        <h3>End-of-Life</h3>
+        <p>Impact of disposal reduced by recycling rate.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <span class="footer-logo">LCA</span>
+        <div>
+          <strong>Electronic Device LCA</strong>
+          <p>Life Cycle Assessment Tool</p>
+        </div>
+      </div>
+      <div class="footer-team">
+        <p class="footer-label">Developed by</p>
+        <p class="footer-names">Soumyashree Sahu · Navdeep · Ayushman Pandey</p>
+      </div>
+      <div class="footer-note">
+        <p>Educational & comparative use</p>
+        <p class="note">Emission factors are approximate. For official reporting use ISO 14040/14044 compliant data.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      const saved = localStorage.getItem("lca-theme") || "light";
+      document.documentElement.setAttribute("data-theme", saved);
+      const icon = document.querySelector(".theme-icon");
+      if (icon) icon.textContent = saved === "dark" ? "☀️" : "🌙";
+      document.getElementById("themeToggle")?.addEventListener("click", () => {
+        const isDark = document.documentElement.getAttribute("data-theme") === "dark";
+        const next = isDark ? "light" : "dark";
+        document.documentElement.setAttribute("data-theme", next);
+        localStorage.setItem("lca-theme", next);
+        if (icon) icon.textContent = next === "dark" ? "☀️" : "🌙";
+      });
+    })();
+  </script>
+</body>
+</html>

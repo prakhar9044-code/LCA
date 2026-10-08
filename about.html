@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="About the Electronic Device LCA methodology and calculations." />
+  <meta name="theme-color" content="#0f766e" />
+  <title>About | Electronic Device LCA</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="index.html" class="brand">
+        <div class="logo">LCA</div>
+        <div class="brand-text">
+          <h1>Electronic Device LCA</h1>
+          <p>Life Cycle Assessment Tool</p>
+        </div>
+      </a>
+      <nav class="nav">
+        <a href="index.html">Home</a>
+        <a href="calculator.html">Calculator</a>
+        <a href="about.html" class="active">About</a>
+      </nav>
+      <div class="header-actions">
+        <button id="themeToggle" class="btn btn-ghost" aria-label="Toggle dark mode">
+          <span class="theme-icon">🌙</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <article class="about-content card">
+      <h1>About this Tool</h1>
+      <p class="lead">
+        This is a simplified Life Cycle Assessment (LCA) calculator for electronic devices.
+        It estimates greenhouse gas emissions (kg CO₂e) across four main stages.
+      </p>
+
+      <h2>1. Manufacturing</h2>
+      <p>Energy required to produce the device multiplied by an emission factor for that electricity.</p>
+      <div class="formula-box">
+        Manufacturing Impact = Manufacturing Energy (kWh) × Emission Factor (kg CO₂e/kWh)
+      </div>
+
+      <h2>2. Transportation</h2>
+      <p>Emissions from moving the product from factory to user, based on weight and distance.</p>
+      <div class="formula-box">
+        Transport Impact = Weight (tonnes) × Distance (km) × Emission Factor (kg CO₂e/tonne-km)
+      </div>
+
+      <h2>3. Use Phase</h2>
+      <p>Electricity consumed while the device is used over its lifetime.</p>
+      <div class="formula-box">
+        Yearly Energy = Power (kW) × Hours/day × 365<br>
+        Use Impact = Yearly Energy × Lifetime (years) × Grid Emission Factor
+      </div>
+
+      <h2>4. End-of-Life</h2>
+      <p>
+        Higher recycling rate reduces remaining impact.
+        Only the non-recycled fraction of base end-of-life emissions is counted.
+      </p>
+      <div class="formula-box">
+        EOL Impact = Base EOL Emissions × (1 − Recycling Rate / 100)
+      </div>
+
+      <h2>Total Carbon Footprint</h2>
+      <div class="formula-box">
+        Total = Manufacturing + Transportation + Use Phase + End-of-Life
+      </div>
+
+      <h2>Important notes</h2>
+      <ul>
+        <li>This tool is for <strong>educational and comparative</strong> purposes.</li>
+        <li>Emission factors are approximate defaults — replace with regional values when possible.</li>
+        <li>For official reporting, follow ISO 14040 / 14044.</li>
+        <li>Real LCAs also include materials extraction, packaging, and detailed disposal.</li>
+      </ul>
+
+      <p style="margin-top: 2rem;">
+        <a href="calculator.html" class="btn btn-primary">Go to Calculator</a>
+      </p>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <span class="footer-logo">LCA</span>
+        <div>
+          <strong>Electronic Device LCA</strong>
+          <p>Life Cycle Assessment Tool</p>
+        </div>
+      </div>
+      <div class="footer-team">
+        <p class="footer-label">Developed by</p>
+        <p class="footer-names">Soumyashree Sahu · Navdeep · Ayushman Pandey</p>
+      </div>
+      <div class="footer-note">
+        <p>Educational & comparative use</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      const saved = localStorage.getItem("lca-theme") || "light";
+      document.documentElement.setAttribute("data-theme", saved);
+      const icon = document.querySelector(".theme-icon");
+      if (icon) icon.textContent = saved === "dark" ? "☀️" : "🌙";
+      document.getElementById("themeToggle")?.addEventListener("click", () => {
+        const isDark = document.documentElement.getAttribute("data-theme") === "dark";
+        const next = isDark ? "light" : "dark";
+        document.documentElement.setAttribute("data-theme", next);
+        localStorage.setItem("lca-theme", next);
+        if (icon) icon.textContent = next === "dark" ? "☀️" : "🌙";
+      });
+    })();
+  </script>
+</body>
+</html>
